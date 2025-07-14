@@ -26,9 +26,9 @@ The following features were implemented :
 - [x] **Collision** handling :
     - If a node with the same **key** (= the same resulting **hash**) already exists, its **value** is **updated**.
     - If **different keys** produce the **same bucket index** after modulo operation (which limits the index to the fixed size of the hashtable), the new element is inserted as the next node in the linked list (separate chaining).
+- [x] Use of only the **allowed functions** specified by the subject: **write, malloc, and free**.
 
-The **hashing** done here is the **[DJB2](https://theartincode.stanis.me/008-djb2/)** method.
-
+The **hashing** algorithm implemented here is **[DJB2](https://theartincode.stanis.me/008-djb2/)**.
 
 The following functions were implemented :
 
