@@ -5,7 +5,7 @@
 ** hash
 */
 
-#include "../include/my.h"
+#include "../include/hashtable.h"
 
 /* DJB2 Hash method */
 /* Note: Normally we'd use 'unsigned long' for the return type

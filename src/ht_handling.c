@@ -5,7 +5,7 @@
 ** ht_handling
 */
 
-#include "../include/my.h"
+#include "../include/hashtable.h"
 
 char *ht_search(hashtable_t *ht, char *key)
 {
@@ -13,7 +13,7 @@ char *ht_search(hashtable_t *ht, char *key)
     node_t *node = ht->buckets[index];
 
     while (node) {
-        if (strcmp(key, node->key) == 0) {
+        if (my_strcmp(key, node->key) == 0) {
             return node->value;
         }
         node = node->next;
@@ -29,7 +29,7 @@ int ht_insert(hashtable_t *ht, char *key, char *value)
     node_t *new_node;
 
     while (node) {
-        if (strcmp(node->key, key) == 0) {
+        if (my_strcmp(node->key, key) == 0) {
             node->value = value;
             return 0;
         }
@@ -64,7 +64,7 @@ int ht_delete(hashtable_t *ht, char *key)
     node_t *prev = NULL;
 
     while (node) {
-        if (strcmp(key, node->key) == 0) {
+        if (my_strcmp(key, node->key) == 0) {
             remove_node(ht, index, prev, node);
             return 0;
         }
@@ -80,11 +80,17 @@ void ht_dump(hashtable_t *ht)
     int hash_value;
 
     for (int index = 0; index < ht->size; index++) {
-        printf("[%i]: \n", index);
+        my_putchar('[');
+        my_putnbr(index);
+        my_puts("]: \n");
         node = ht->buckets[index];
         while (node) {
             hash_value = ht->hash_function(node->key, ht->size);
-            printf("> %d - %s\n", hash_value, node->value);
+            my_puts("> ");
+            my_putnbr(hash_value);
+            my_puts(" - ");
+            my_puts(node->value);
+            my_putchar('\n');
             node = node->next;
         }
     }

@@ -5,6 +5,9 @@
 ** Hash table header file
 */
 
+#include "./my.h"
+#include <stdlib.h>
+
 #ifndef HASHTABLE_H
     #define HASHTABLE_H
 

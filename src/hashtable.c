@@ -5,16 +5,21 @@
 ** hashtable
 */
 
-#include "../include/my.h"
+#include "../include/hashtable.h"
+
+static int handle_len_error(void)
+{
+    my_puts("The size of the hashtable should be greater ");
+    my_puts("or equal to 1.\n");
+    return 84;
+}
 
 hashtable_t *new_hashtable(int (*hash)(char *, int), int len)
 {
     hashtable_t *hashtable;
 
-    if (len < 1) {
-        printf("The size of the hashtable should be greater or equal to 1.\n");
-        return NULL;
-    }
+    if (len < 1)
+        handle_len_error();
     hashtable = malloc(sizeof(hashtable_t));
     if (!hashtable)
         return NULL;
