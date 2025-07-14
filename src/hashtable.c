@@ -7,19 +7,20 @@
 
 #include "../include/hashtable.h"
 
-static int handle_len_error(void)
+static void handle_len_error(void)
 {
     my_puts("The size of the hashtable should be greater ");
     my_puts("or equal to 1.\n");
-    return 84;
 }
 
 hashtable_t *new_hashtable(int (*hash)(char *, int), int len)
 {
     hashtable_t *hashtable;
 
-    if (len < 1)
+    if (len < 1) {
         handle_len_error();
+        return NULL;
+    }
     hashtable = malloc(sizeof(hashtable_t));
     if (!hashtable)
         return NULL;
