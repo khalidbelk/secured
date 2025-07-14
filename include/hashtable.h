@@ -36,4 +36,8 @@ int ht_delete(hashtable_t *ht, char *key);
 char *ht_search(hashtable_t *ht, char *key);
 void ht_dump(hashtable_t *ht);
 
+// Node related functions
+void remove_node(hashtable_t *ht, int index, node_t *prev, node_t *node);
+void print_node(int hash_value, node_t *node);
+
 #endif /* HASHTABLE_H */

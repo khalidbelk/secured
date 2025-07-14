@@ -9,6 +9,7 @@ SRC		=	src/main.c	\
 			src/hash.c	\
 			src/hashtable.c	\
 			src/ht_handling.c	\
+			src/node.c	\
 
 OBJ	=	$(SRC:.c=.o)
 

@@ -45,17 +45,6 @@ int ht_insert(hashtable_t *ht, char *key, char *value)
     return 0;
 }
 
-static void remove_node(hashtable_t *ht, int index,
-    node_t *prev, node_t *node)
-{
-    if (prev) {
-        prev->next = node->next;
-    } else {
-        ht->buckets[index] = node->next;
-    }
-    free(node);
-}
-
 int ht_delete(hashtable_t *ht, char *key)
 {
     int hash_value = ht->hash_function(key, ht->size);
@@ -86,11 +75,7 @@ void ht_dump(hashtable_t *ht)
         node = ht->buckets[index];
         while (node) {
             hash_value = ht->hash_function(node->key, ht->size);
-            my_puts("> ");
-            my_putnbr(hash_value);
-            my_puts(" - ");
-            my_puts(node->value);
-            my_putchar('\n');
+            print_node(hash_value, node);
             node = node->next;
         }
     }
