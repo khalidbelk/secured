@@ -6,7 +6,6 @@
 */
 
 #include "../include/hashtable.h"
-#include "../include/my.h"
 
 int main(int argc, char **argv)
 {
